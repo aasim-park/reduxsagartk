@@ -5,6 +5,7 @@ export const catSlice = createSlice({
   initialState: {
     cats: [],
     isLoading: false,
+    error: "",
   },
   reducers: {
     getCatsFetch: (state) => {
@@ -14,8 +15,10 @@ export const catSlice = createSlice({
       state.cats = action.payload;
       state.isLoading = false;
     },
-    getCatsFailure: (state) => {
+    getCatsFailure: (state, action) => {
       state.isLoading = false;
+      state.cats = [];
+      state.error = action.payload;
     },
   },
 });

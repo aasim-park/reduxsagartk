@@ -5,16 +5,17 @@ import { getCatsFetch } from "./catState";
 
 function App() {
   const cats = useSelector((state) => state.cats.cats);
+  const error = useSelector((state) => state.cats.error);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCatsFetch());
   }, [dispatch]);
-  console.log(cats);
   return (
     <div className="App">
       <h1>Cats Spices gallery</h1>
       <p> lots of cats</p>
       <hr />
+      <h1>{error}</h1>
       <div className="gallery">
         {cats.map((cat) => (
           <div key={cat.id} className="row">
